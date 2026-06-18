@@ -1,0 +1,43 @@
+name: N1
+options:
+  # Fallback prefix only; the real bundle id is set in N1/Local.xcconfig
+  # (PRODUCT_BUNDLE_IDENTIFIER), which overrides this.
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  N1Stats:
+    path: ../packages/N1Stats
+targets:
+  N1:
+    type: application
+    platform: iOS
+    sources: [N1]
+    # Signing + bundle id come from a gitignored xcconfig so no personal values are
+    # baked into source. Copy N1/Local.xcconfig.template to N1/Local.xcconfig and fill
+    # in your Apple Developer Team ID + a unique bundle identifier.
+    configFiles:
+      Debug: N1/Local.xcconfig
+      Release: N1/Local.xcconfig
+    dependencies:
+      - package: N1Stats
+    entitlements:
+      path: N1/N1.entitlements
+      properties:
+        com.apple.developer.healthkit: true
+    info:
+      path: N1/Info.plist
+      properties:
+        CFBundleDisplayName: N1
+        UILaunchScreen: {}
+        NSHealthShareUsageDescription: "N1 reads your sleep, heart rate, and activity to answer your questions; your raw data never leaves your device."
+        NSLocationWhenInUseUsageDescription: "N1 uses occasional location 'visits' to find patterns like work vs home in your questions. It's optional, stays on your device, and is never uploaded except as aggregated context to your own analysis backend."
+        NSLocationAlwaysAndWhenInUseUsageDescription: "N1 uses occasional location 'visits' to find patterns like work vs home in your questions. It's optional, stays on your device, and is never uploaded except as aggregated context to your own analysis backend."
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+    settings:
+      base:
+        # PRODUCT_BUNDLE_IDENTIFIER and DEVELOPMENT_TEAM are supplied by N1/Local.xcconfig.
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N1 — your own data scientist, on your own data</title>
+  <meta name="description" content="N1 is an iOS app and a local Mac backend that runs an autonomous AI analyst over your own Apple Health data. Ask a plain-language question; it investigates your real data on your own machine, answers honestly, and helps you run a real N-of-1 experiment. Local-first, open source, not medical advice." />
+  <meta name="theme-color" content="#0B0C0E" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="N1 — your own data scientist, on your own data" />
+  <meta property="og:description" content="An AI data scientist investigates your real health data on your own machine, answers honestly, then helps you run an experiment to confirm cause." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts: Newsreader (serif headlines/conclusions) + Inter (body). Numbers use system mono. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================= HEADER ============================= -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">N<span class="dot">1</span></a>
+      <nav>
+        <!-- TODO: replace with the real GitHub repository URL -->
+        <a class="nav-link" href="https://github.com/zzhiyuann/n1" aria-label="View source on GitHub">GitHub&nbsp;↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================= HERO ============================= -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">N1 &middot; quantified-self, done honestly</p>
+          <h1>Your own data scientist,<br />on your own data.</h1>
+          <p class="hero-sub">Ask a plain-language question about your health. An AI analyst investigates <em>your</em> data, on <em>your</em> machine, shows its work — and helps you run a real experiment to confirm cause.</p>
+          <div class="hero-cta">
+            <!-- TODO: replace href with the real GitHub repository URL -->
+            <a class="btn btn-primary" href="https://github.com/zzhiyuann/n1">Get it on GitHub</a>
+            <a class="btn btn-ghost" href="#how">How it works</a>
+          </div>
+          <p class="hero-note">Local-first<span class="sep">·</span>Open source (MIT)<span class="sep">·</span>Not medical advice</p>
+        </div>
+
+        <div class="hero-art reveal">
+          <div class="phone">
+            <img src="assets/answer-snapshot.png" width="414" height="900"
+                 alt="N1 iOS app showing a Snapshot finding: on nights you go to bed after midnight, HRV averages 45.6 ms versus 53.5 ms on earlier nights, a very strong association across 180 days." />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= ACT 1 ============================= -->
+    <section class="act">
+      <div class="wrap act-grid">
+        <div class="act-media reveal">
+          <div class="phone phone--front">
+            <img src="assets/groundtruth-home.png" width="414" height="900"
+                 alt="N1 inferring the user's home location from clustered evening and overnight GPS points and asking the user to confirm it." />
+          </div>
+        </div>
+        <div class="act-copy reveal">
+          <p class="eyebrow"><span class="idx">01</span> &nbsp;Ground truth</p>
+          <h2>It gets to know you — from your data, not a questionnaire.</h2>
+          <p>No forms. On first run N1 reads your Apple Health history and proposes the ground truth it inferred — your home, time zone, work pattern, and physiological baselines — for you to confirm or correct.</p>
+          <p>Whatever you confirm becomes durable context the agent reuses, so it never has to guess, or re-ask, again.</p>
+          <blockquote class="quote">“Home is around <span class="num">≈47, −122</span> (the Seattle area) … the dominant cluster of your evening and overnight GPS points (<span class="num">30 of 56</span> samples). Is this your home?”</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= ACT 2 ============================= -->
+    <section class="act">
+      <div class="wrap act-grid">
+        <div class="act-media reveal">
+          <div class="phone phone--back">
+            <img src="assets/ask-chain-of-thought.png" width="414" height="900"
+                 alt="N1 streaming its live chain of thought: reading data and running correlation and partial-correlation analysis." />
+          </div>
+          <div class="phone phone--front">
+            <img src="assets/answer-snapshot.png" width="414" height="900"
+                 alt="N1 Snapshot answer: late nights associate with lower HRV, 45.6 ms versus 53.5 ms, t equals minus 12, across 180 days." />
+          </div>
+        </div>
+        <div class="act-copy reveal">
+          <p class="eyebrow"><span class="idx">02</span> &nbsp;Investigation</p>
+          <h2>Ask anything; watch it investigate.</h2>
+          <p>The agent decides what to look at, writes and runs real analysis code, and streams every step so you can see <em>how</em> it got there. Every number comes from code it actually ran — the open-source stats engine and its own scripts. The model narrates; it never invents a figure.</p>
+          <blockquote class="quote">“On nights you go to bed after midnight, HRV averages <span class="num">45.6&nbsp;ms</span> vs <span class="num">53.5&nbsp;ms</span> on earlier nights (<span class="num">−15%</span>) … a very strong association (<span class="num">t&nbsp;=&nbsp;−12</span>).”</blockquote>
+          <p>And it volunteers its own limits — “matched-sleep late group is smaller (<span class="mono">n&nbsp;=&nbsp;18</span>); late nights also fall on weekends <span class="mono">42%</span> of the time, so weekend behaviors may ride along.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= ACT 3 ============================= -->
+    <section class="act">
+      <div class="wrap act-grid">
+        <div class="act-media reveal">
+          <div class="phone phone--back">
+            <img src="assets/experiments-today.png" width="414" height="900"
+                 alt="N1 showing several running experiments and today's task for each." />
+          </div>
+          <div class="phone phone--front">
+            <img src="assets/experiment-detail.png" width="414" height="900"
+                 alt="N1 pre-registered experiment detail: design, locked SHA-256 hash, progress, and an analyze action." />
+          </div>
+        </div>
+        <div class="act-copy reveal">
+          <p class="eyebrow"><span class="idx">03</span> &nbsp;Confirm cause</p>
+          <h2>It knows what it can’t see — so you run an experiment.</h2>
+          <p>When the honest answer needs something your sensors can’t capture, N1 says so and offers to find out for real.</p>
+          <blockquote class="quote warn-quote">“Your watch can’t see <span class="warn">alcohol intake</span>. Late nights often pair with drinking, which sharply lowers HRV — log it to rule it out as the real driver.”</blockquote>
+          <p>That spins up a proper <strong style="color:var(--ink);font-weight:500">N-of-1 experiment</strong>: a pre-registered, randomized crossover with paired blocks and washout, locked with a <span class="mono">SHA-256</span> of the spec — plus self-report logging for the things sensors miss. Run several at once; when enough days are in, N1 analyzes it with a within-person Bayesian model and gives an effect size with honest uncertainty.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= HOW IT WORKS ============================= -->
+    <section class="how" id="how">
+      <div class="wrap">
+        <div class="how-head reveal">
+          <p class="eyebrow">Architecture</p>
+          <h2>How it works.</h2>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-no">01</div>
+            <h3>Numbers from code, not the model.</h3>
+            <p>Statistics come from deterministic, open-source code — the <code>N1Stats</code> engine and the agent’s own scripts. The LLM orchestrates and explains; it is never the source of a number.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-no">02</div>
+            <h3>Runs on hardware you own.</h3>
+            <p>An iOS app talks to a local backend on your Mac over <code>Tailscale</code> (or LAN). It returns a job id instantly and the app polls — so backgrounding your phone can’t interrupt an analysis.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-no">03</div>
+            <h3>Method is an editable handbook.</h3>
+            <p>The agent’s methodology lives in <code>handbook.md</code>, reloaded per request — not hardcoded. Tune how your data scientist thinks without touching the code.</p>
+          </article>
+        </div>
+
+        <div class="flow reveal" aria-label="Data flow: the iOS app sends aggregated context to your Mac backend, which runs the Claude Code CLI and returns a job id the app polls.">
+          <span class="node">iOS app — Apple Health</span>
+          <span class="arrow" aria-hidden="true">⟶<small>aggregated context</small></span>
+          <span class="node">Your Mac — n1d backend</span>
+          <span class="arrow" aria-hidden="true">⟲<small>jobId → poll steps</small></span>
+          <span class="node">Autonomous analyst</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= PRIVACY ============================= -->
+    <section class="privacy">
+      <div class="wrap privacy-grid">
+        <div class="reveal">
+          <p class="eyebrow">Privacy</p>
+          <h2>Your data never leaves your devices.</h2>
+        </div>
+        <ul class="reveal">
+          <li><span class="tick" aria-hidden="true">[ ✓ ]</span><span><strong>Raw samples stay local.</strong> Your health and location data live on your phone; analysis runs on your Mac. No third-party servers.</span></li>
+          <li><span class="tick" aria-hidden="true">[ ✓ ]</span><span><strong>Only aggregated context is shared</strong> — and only with your own backend, over a network private to you. No raw export.</span></li>
+          <li><span class="tick" aria-hidden="true">[ ✓ ]</span><span><strong>Associations, stated plainly.</strong> N1 reports patterns in your own historical data. It is not a medical device and gives no diagnosis or treatment advice.</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="/">N<span class="dot">1</span></a>
+        <nav class="footer-links">
+          <!-- TODO: replace with the real GitHub repository URL -->
+          <a class="nav-link" href="https://github.com/zzhiyuann/n1">GitHub&nbsp;↗</a>
+          <!-- TODO: replace with the real license file URL -->
+          <a class="nav-link" href="https://github.com/zzhiyuann/n1/blob/main/LICENSE">MIT License</a>
+          <a class="nav-link" href="#how">How it works</a>
+        </nav>
+      </div>
+      <div class="footer-meta">
+        <div>Open source &middot; MIT © 2026 Zhiyuan Wang</div>
+        <div class="disclaimer">N1 is a personal research / quantified-self tool — not medical advice. It reports associations in your own historical data, and is careful to say so.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tiny vanilla scroll-reveal. No dependencies. -->
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>

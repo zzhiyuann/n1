@@ -1,0 +1,17 @@
+{
+  "name": "n1d",
+  "version": "3.0.0",
+  "description": "Local HTTP server that runs the Claude Code CLI as an autonomous data-science agent over your personal health/sensing data.",
+  "type": "module",
+  "main": "n1d.mjs",
+  "bin": {
+    "n1d": "n1d.mjs"
+  },
+  "scripts": {
+    "start": "node n1d.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

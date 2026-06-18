@@ -1,0 +1,17 @@
+// Local signing configuration TEMPLATE (committed).
+//
+// To build N1 yourself:
+//   1. Copy this file to N1/Local.xcconfig
+//          cp N1/Local.xcconfig.template N1/Local.xcconfig
+//   2. Fill in the two values below:
+//        - DEVELOPMENT_TEAM: your 10-character Apple Developer Team ID.
+//          Find it at https://developer.apple.com/account → Membership,
+//          or in Xcode → Settings → Accounts.
+//        - PRODUCT_BUNDLE_IDENTIFIER: a unique reverse-DNS bundle id you own,
+//          e.g. com.yourname.n1
+//   3. Run xcodegen, then build.
+//
+// N1/Local.xcconfig is gitignored, so your personal values never get committed.
+
+DEVELOPMENT_TEAM =
+PRODUCT_BUNDLE_IDENTIFIER = com.yourname.n1
